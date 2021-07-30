@@ -36,15 +36,18 @@ namespace Controllers
                 var x = new Dictionary<string, string>();
                 Exam y = await _context.Exams.FirstOrDefaultAsync(d => d.Id == item.ExamId);
 
-                x.Add("Result ID", item.Id);
-                x.Add("Student ID", item.StudentId);
-                x.Add("Exam", y.Name);
-                x.Add("Semester", y.Semester.ToString());
-                x.Add("Full Marks", y.Marks.ToString());
-                x.Add("ObtainedMark", item.ObtainedMark.ToString());
+                if( y != null) {
+                    x.Add("Result ID", item.Id);
+                    x.Add("Student ID", item.StudentId);
+                    x.Add("Exam", y.Name);
+                    x.Add("Semester", y.Semester.ToString());
+                    x.Add("Full Marks", y.Marks.ToString());
+                    x.Add("ObtainedMark", item.ObtainedMark.ToString());
+                    done.Add(x);
+                }
                 
 
-                done.Add(x);
+                
 
 
             }
